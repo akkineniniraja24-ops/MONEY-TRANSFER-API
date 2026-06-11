@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Money Transfer App</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#12003b;
+    color:white;
+}
+
+.header{
+    background:#5b1fd1;
+    padding:30px;
+    text-align:center;
+    font-size:35px;
+    font-weight:bold;
+    border-radius:0 0 30px 30px;
+}
+
+.section{
+    padding:20px;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+.menu{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.item{
+    width:90px;
+    text-align:center;
+}
+
+.item a{
+    text-decoration:none;
+    color:white;
+}
+
+.icon{
+    width:65px;
+    height:65px;
+    background:#7b2cff;
+    border-radius:50%;
+    margin:auto;
+    line-height:65px;
+    font-size:28px;
+    transition:0.3s;
+}
+
+.icon:hover{
+    background:#9a55ff;
+    transform:scale(1.1);
+}
+
+.bottom{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#111;
+    display:flex;
+    justify-content:space-around;
+    padding:15px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    SILVER PAY
+</div>
+
+<div class="section">
+    <h2>Money Transfers</h2>
+
+    <div class="menu">
+
+        <div class="item">
+            <a href="mobile.html">
+                <div class="icon">📱</div>
+                <p>Mobile</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="bank.html">
+                <div class="icon">🏦</div>
+                <p>Bank</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="rewards.html">
+                <div class="icon">💰</div>
+                <p>Wallet</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="balance.html">
+                <div class="icon">₹</div>
+                <p>Balance</p>
+            </a>
+        </div>
+
+    </div>
+
+    <h2>Recharge & Bills</h2>
+
+    <div class="menu">
+
+        <div class="item">
+            <a href="recharge.html">
+                <div class="icon">🔋</div>
+                <p>Recharge</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="fees.html">
+                <div class="icon">📖</div>
+                <p>Fees</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="electricity.html">
+                <div class="icon">💡</div>
+                <p>Electricity</p>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="loan.html">
+                <div class="icon">💼</div>
+                <p>Loan</p>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div class="bottom">
+    <span>🏠 Home</span>
+    <span>🔍 Search</span>
+    <span>📷 Scan</span>
+    <span>🔔 Alerts</span>
+    <span>🕒 History</span>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select Contact</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#12003b;
+    color:white;
+}
+
+.header{
+    background:#5b1fd1;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.contact{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#1f1f1f;
+    margin:10px;
+    padding:15px;
+    border-radius:12px;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#7b2cff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.info{
+    flex:1;
+    margin-left:15px;
+}
+
+.name{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.number{
+    color:#bbb;
+}
+
+.sendBtn{
+    background:#7b2cff;
+    border:none;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    color:white;
+    margin:20px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+📱 Select Contact
+</div>
+
+<div id="contacts"></div>
+
+<a href="home .html" class="back">
+⬅ Back to Home
+</a>
+
+<script>
+
+const contacts = [
+    {name:"Nanna", number:"9876543210"},
+    {name:"Thammudu", number:"9123456780"},
+    {name:"Niraja", number:"9000011111"},
+    {name:"Kaigala Siva", number:"9555512345"},
+    {name:"Friend", number:"9888877777"}
+];
+
+let output = "";
+
+contacts.forEach(contact => {
+
+    output += `
+    <div class="contact">
+
+        <div class="avatar">
+            ${contact.name.charAt(0)}
+        </div>
+
+        <div class="info">
+            <div class="name">${contact.name}</div>
+            <div class="number">${contact.number}</div>
+        </div>
+
+        <button class="sendBtn"
+        onclick="sendMoney('${contact.name}','${contact.number}')">
+        Send
+        </button>
+
+    </div>
+    `;
+});
+
+document.getElementById("contacts").innerHTML = output;
+
+function sendMoney(name, number){
+
+    let amount = prompt(
+        "Enter amount to send to " + name
+    );
+
+    if(amount){
+
+        alert(
+            "₹" + amount +
+            " sent to " +
+            name +
+            " (" + number + ")"
+        );
+    }
+}
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rewards & Cashback</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#12003b;
+    color:white;
+}
+
+.header{
+    background:#5b1fd1;
+    padding:25px;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.wallet-card{
+    width:85%;
+    max-width:500px;
+    margin:20px auto;
+    background:#1f1f1f;
+    padding:25px;
+    border-radius:20px;
+}
+
+.balance{
+    font-size:40px;
+    color:#00ff99;
+    text-align:center;
+    font-weight:bold;
+}
+
+.reward-btn{
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    border:none;
+    background:#7b2cff;
+    color:white;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.reward-card{
+    background:#2a2a2a;
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+}
+
+.brand{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.offer{
+    color:#00ff99;
+    margin-top:5px;
+}
+
+.cashback{
+    color:gold;
+    margin-top:5px;
+}
+
+.btn{
+    display:block;
+    width:200px;
+    margin:25px auto;
+    text-align:center;
+    background:#7b2cff;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+🎁 Rewards & Cashback
+</div>
+
+<div class="wallet-card">
+
+    <h3>Available Balance</h3>
+
+    <div class="balance">
+        ₹12,500
+    </div>
+
+    <button class="reward-btn" onclick="loadRewards()">
+        View Rewards & Vouchers
+    </button>
+
+    <div id="rewards"></div>
+
+</div>
+
+<a href="home .html" class="btn">
+⬅ Back to Home
+</a>
+
+<script>
+
+function loadRewards(){
+
+    // Replace this with your API response later
+    const rewards = [
+
+        {
+            brand:"Amazon",
+            voucher:"₹200 Gift Voucher",
+            cashback:"5% Cashback"
+        },
+
+        {
+            brand:"Flipkart",
+            voucher:"₹500 Discount Voucher",
+            cashback:"10% Cashback"
+        },
+
+        {
+            brand:"Myntra",
+            voucher:"20% OFF Coupon",
+            cashback:"₹100 Cashback"
+        },
+
+        {
+            brand:"Swiggy",
+            voucher:"Free Delivery Voucher",
+            cashback:"15% Cashback"
+        }
+
+    ];
+
+    let output = "";
+
+    rewards.forEach(item => {
+
+        output += `
+        <div class="reward-card">
+
+            <div class="brand">
+                ${item.brand}
+            </div>
+
+            <div class="offer">
+                🎟 ${item.voucher}
+            </div>
+
+            <div class="cashback">
+                💰 ${item.cashback}
+            </div>
+
+        </div>
+        `;
+    });
+
+    document.getElementById("rewards").innerHTML = output;
+}
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bank Details</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#12003b;
+    color:white;
+}
+
+.header{
+    background:#5b1fd1;
+    padding:25px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.card{
+    background:#1f1f1f;
+    width:80%;
+    margin:40px auto;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(255,255,255,0.2);
+}
+
+.row{
+    margin:15px 0;
+}
+
+.label{
+    color:#bbb;
+    font-size:14px;
+}
+
+.value{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.balance{
+    text-align:center;
+    margin-top:20px;
+    font-size:32px;
+    color:#00ff99;
+}
+
+.btn{
+    display:block;
+    width:200px;
+    margin:30px auto;
+    text-align:center;
+    background:#7b2cff;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
+}
+
+.btn:hover{
+    background:#9a55ff;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+    🏦 My Bank Account
+</div>
+
+<div class="card">
+
+    <div class="row">
+        <div class="label">Account Holder</div>
+        <div class="value">Akkineni Niraja</div>
+    </div>
+
+    <div class="row">
+        <div class="label">Bank Name</div>
+        <div class="value">Silver Bank</div>
+    </div>
+
+    <div class="row">
+        <div class="label">Account Number</div>
+        <div class="value">XXXX XXXX 4567</div>
+    </div>
+
+    <div class="row">
+        <div class="label">IFSC Code</div>
+        <div class="value">SILV0001234</div>
+    </div>
+
+    <div class="balance">
+        ₹25,000
+    </div>
+
+</div>
+
+<a href="home .html" class="btn">
+⬅ Back to Home
+</a>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Account Balance</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#12003b;
+    color:white;
+}
+
+.header{
+    background:#5b1fd1;
+    padding:25px;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.container{
+    padding:20px;
+}
+
+.balance-card{
+    background:#1f1f1f;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.balance-title{
+    color:#ccc;
+    font-size:18px;
+}
+
+.balance{
+    font-size:45px;
+    color:#00ff99;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.account-box{
+    background:#1f1f1f;
+    padding:20px;
+    border-radius:15px;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    margin-top:10px;
+}
+
+.info{
+    margin-top:20px;
+    line-height:1.8;
+}
+
+.btn{
+    display:block;
+    width:220px;
+    margin:30px auto;
+    text-align:center;
+    background:#7b2cff;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    ₹ Account Balance
+</div>
+
+<div class="container">
+
+    <div class="balance-card">
+
+        <div class="balance-title">
+            Available Balance
+        </div>
+
+        <div class="balance" id="balance">
+            ₹25,000
+        </div>
+
+    </div>
+
+    <div class="account-box">
+
+        <h3>Switch Account</h3>
+
+        <select onchange="switchAccount(this.value)">
+            <option value="0">Savings Account</option>
+            <option value="1">Salary Account</option>
+            <option value="2">Business Account</option>
+        </select>
+
+        <div class="info">
+            <p><strong>Account Number:</strong> <span id="accNo">XXXX1234</span></p>
+            <p><strong>Bank:</strong> <span id="bank">Silver Bank</span></p>
+            <p><strong>Account Type:</strong> <span id="type">Savings</span></p>
+        </div>
+
+    </div>
+
+</div>
+
+<a href="home .html" class="btn">
+    ⬅ Back to Home
+</a>
+
+<script>
+
+const accounts = [
+
+{
+    balance:"₹25,000",
+    accNo:"XXXX1234",
+    bank:"Silver Bank",
+    type:"Savings"
+},
+
+{
+    balance:"₹78,500",
+    accNo:"XXXX5678",
+    bank:"Silver Bank",
+    type:"Salary"
+},
+
+{
+    balance:"₹1,45,000",
+    accNo:"XXXX9876",
+    bank:"Silver Bank",
+    type:"Business"
+}
+
+];
+
+function switchAccount(index){
+
+    document.getElementById("balance").innerHTML =
+        accounts[index].balance;
+
+    document.getElementById("accNo").innerHTML =
+        accounts[index].accNo;
+
+    document.getElementById("bank").innerHTML =
+        accounts[index].bank;
+
+    document.getElementById("type").innerHTML =
+        accounts[index].type;
+}
+
+</script>
+
+</body>
+</html>
