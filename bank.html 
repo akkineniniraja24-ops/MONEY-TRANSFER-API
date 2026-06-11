@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Details</title>
+    <link rel="stylesheet" href="css/bank.css">
+</head>
+<body>
+
+<div class="header">
+    🏦 My Bank Account
+</div>
+
+<div class="card">
+
+    <div class="row">
+        <div class="label">Account Holder</div>
+        <div class="value">Akkineni Niraja</div>
+    </div>
+
+    <div class="row">
+        <div class="label">Bank Name</div>
+        <div class="value">Silver Bank</div>
+    </div>
+
+    <div class="balance">
+        ₹25,000
+    </div>
+
+</div>
+
+</body>
+</html>
