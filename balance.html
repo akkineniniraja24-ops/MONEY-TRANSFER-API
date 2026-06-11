@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Balance</title>
+    <link rel="stylesheet" href="css/balance.css">
+</head>
+<body>
+
+<div class="header">
+    ₹ Account Balance
+</div>
+
+<div class="container">
+
+<div class="balance-card">
+
+<div class="balance-title">
+Available Balance
+</div>
+
+<div class="balance" id="balance">
+₹25,000
+</div>
+
+</div>
+
+<div class="account-box">
+
+<h3>Switch Account</h3>
+
+<select onchange="switchAccount(this.value)">
+<option value="0">Savings Account</option>
+<option value="1">Salary Account</option>
+<option value="2">Business Account</option>
+</select>
+
+<div class="info">
+<p><strong>Account Number:</strong> <span id="accNo">XXXX1234</span></p>
+<p><strong>Bank:</strong> <span id="bank">Silver Bank</span></p>
+<p><strong>Account Type:</strong> <span id="type">Savings</span></p>
+</div>
+
+</div>
+
+</div>
+
+<script src="js/balance.js"></script>
+
+</body>
+</html>
